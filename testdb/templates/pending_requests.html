@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+{% block content %}
+<style>
+    h2 {
+        text-align: center;
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    table,
+    th,
+    td {
+        border: 1px solid #ddd;
+    }
+
+    th,
+    td {
+        padding: 10px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    tr:nth-child(odd) {
+        background-color: #ffffff;
+    }
+
+    .actions {
+        display: flex;
+        justify-content: center;
+    }
+
+    .actions form {
+        margin-right: 10px;
+    }
+
+    .actions button {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 8px 12px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .actions button.decline {
+        background-color: #FF5722;
+    }
+
+    .actions button:hover {
+        background-color: #45a049;
+    }
+     /* Logout button styles */
+        .logout-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #e74c3c;
+            /* Red button color */
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            display: block;
+        
+            margin: 10px 0;
+            padding: 10px 20px;
+           
+            
+            color: #ecf0f1;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            font-size: 18px;
+        }
+
+        .logout-button:hover {
+            background-color: #c0392b;
+            /* Darker red on hover */
+        }
+        td{
+            color: green;
+        }
+        .back-homepage {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: inline-block;
+            padding: 10px 20px;
+            background: #3498db;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+            font-size: 18px;
+        }
+
+        .back-homepage:hover {
+            background: #2980b9;
+        }
+</style>
+</head>
+
+
+<body style="background-color: #2c3e50;">
+    <a class="back-homepage" href="/">Back to Homepage</a>
+<h2 style="color: red;">Pending Certificate Requests</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Registration Number</th>
+            <th>ID Number</th>
+            <th>Course</th>
+            <th>Year of Completion</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for student in pending_requests %}
+        <tr>
+            <td>{{ student.name }}</td>
+            <td>{{ student.registration_number }}</td>
+            <td>{{ student.id_number }}</td>
+            <td>{{ student.course }}</td>
+            <td>{{ student.year_of_completion }}</td>
+            <td class="actions">
+                <form method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="student_id" value="{{ student.id }}">
+                    <input type="hidden" name="action" value="accept">
+                    <button type="submit">Accept</button>
+                </form>
+                <form method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="student_id" value="{{ student.id }}">
+                    <input type="hidden" name="action" value="decline">
+                    <button class="decline" type="submit">Decline</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a class="logout-button"  href="{% url 'custom_logout' %}">Logout</a>
+{% endblock %}
+</body>
+</html>

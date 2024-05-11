@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Annual Report Not Found</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            background-color: #ff3333;
+            color: #fff;
+            padding: 20px 0;
+        }
+
+        p {
+            text-align: center;
+            font-size: 18px;
+            margin: 20px;
+        }
+
+        a {
+            text-align: center;
+            display: block;
+            text-decoration: none;
+            color: #007BFF;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Annual Report Not Found</h1>
+    <p>The report for the selected year does not exist.</p>
+    <a href="{% url 'view_annual_report' %}">Back to Report Selection</a>
+</body>
+
+</html>

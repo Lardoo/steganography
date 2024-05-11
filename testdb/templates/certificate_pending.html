@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Certificate Pending</title>
+    <style>
+        /* Add this CSS to your stylesheet to style the elements */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            /* Background color */
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #007bff;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Certificate Pending</h1>
+    <p>Dear {{ student.name }},</p>
+    <p>Your certificate for registration number: {{ student.registration_number }} is still pending.</p>
+    <p>Once your certificate is processed, you will be able to download it from your dashboard.</p>
+    <a href="{% url 'student_dashboard' %}" class="btn btn-primary">Back to Dashboard</a>
+</body>
+
+</html>

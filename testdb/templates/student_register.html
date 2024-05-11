@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<style>
+    /* Add this CSS to your stylesheet to style the elements */
+    .student-registration {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f0f0f0;
+        /* Background color */
+        border: 1px solid #ccc;
+        /* Border */
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .page-title {
+        color: #007bff;
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .registration-form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .registration-form input {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        text-decoration: none;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        text-align: center;
+        transition: background-color 0.3s;
+        background-color: #007bff;
+        /* Button background color */
+        color: #fff;
+    }
+
+    .btn:hover {
+        background-color: #0056b3;
+    }
+
+    /* Error message styling */
+    .error-message {
+        color: #ff0000;
+        /* Red color for error messages */
+        font-size: 14px;
+        margin-top: 10px;
+    }
+     .back-homepage {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: inline-block;
+            padding: 10px 20px;
+            background: #3498db;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+            font-size: 18px;
+        }
+
+        .back-homepage:hover {
+            background: #2980b9;
+        }
+</style>
+</head>
+<body>
+<a class="back-homepage" href="/">Back to Homepage</a>
+{% block content %}
+<div class="student-registration">
+    <h2 class="page-title">Student Account Registration</h2>
+    <form method="post" class="registration-form">
+        {% csrf_token %}
+        {{ form.username.label_tag }}
+        {{ form.username }}
+        {{ form.registration_number.label_tag }}
+        {{ form.registration_number }}
+        {{ form.id_number.label_tag }}
+        {{ form.id_number }}
+        {{ form.password1.label_tag }}
+        {{ form.password1 }}
+        {{ form.password2.label_tag }}
+        {{ form.password2 }}
+        {{ form.email.label_tag }}
+        {{ form.email }}
+
+        <button type="submit" class="btn">Register</button>
+        <p class="register-link">Already have an account? <a href="{% url 'student_login' %}">Login</a></p>
+        </form>
+    {% if form.errors %}
+    <div class="error-message">
+        {% for field, errors in form.errors.items %}
+        {{ field }}: {{ errors.0 }}
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+
+{% endblock %}
+</body>
+</html>

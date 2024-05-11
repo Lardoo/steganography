@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<style>
+    /* Add this CSS to your stylesheet to style the elements */
+    .employer-dashboard {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f0f0f0;
+        /* Background color */
+        border: 1px solid #ccc;
+        /* Border */
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .page-title {
+        color: #007bff;
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    .subtext {
+        color: #555;
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    .action-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        text-decoration: none;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        text-align: center;
+        transition: background-color 0.3s;
+        background-color: #007bff;
+        /* Button background color */
+        color: #fff;
+    }
+
+    .btn:hover {
+        background-color: #0056b3;
+    }
+
+    /* Add a background color to the "Logout" button */
+    .btn-secondary {
+        background-color: #6c757d;
+    }
+
+    /* Style the "Logout" button on hover */
+    .btn-secondary:hover {
+        background-color: #5a6269;
+    }
+    .back-homepage {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: inline-block;
+            padding: 10px 20px;
+            background: #3498db;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+            font-size: 18px;
+        }
+
+        .back-homepage:hover {
+            background: #2980b9;
+        }
+
+</style>
+</head>
+<body>
+    <a class="back-homepage" href="/">Back to Homepage</a>
+{% block content %}
+<div class="employer-dashboard">
+    <h2 class="page-title">Welcome, {{ employer.name }}</h2>
+    <!-- Display employer information and actions here -->
+    <p class="subtext">Your Dashboard</p>
+    <div class="action-buttons">
+        <a href="/validate_certificate" class="btn btn-primary">Certificate Validation</a>
+        <a href="{% url 'logout' %}" class="btn btn-secondary">Logout</a>
+    </div>
+</div>
+{% endblock %}
+</body>
+</html>

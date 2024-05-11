@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+<style>
+    /* Add this CSS to your stylesheet to style the elements */
+    .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .page-title {
+        color: #007bff;
+    }
+
+    .action-buttons {
+        margin-top: 20px;
+    }
+
+    .download-button,
+    .return-button,
+    .logout-button {
+        display: inline-block;
+        margin: 10px;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 5px;
+        background-color: #007bff;
+        color: #fff;
+        transition: background-color 0.3s;
+    }
+
+    .download-button:hover,
+    .return-button:hover,
+    .logout-button:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+{% block content %}
+<div class="certificate-download">
+    <h2 class="page-title">Certificate Download</h2>
+    <p class="subtext">You can download your certificate below:</p>
+    <div class="action-buttons">
+        <a class="btn btn-primary" href="{% url 'download_certificate' student.id %}">Download Your Certificate</a>
+        <a class="btn btn-secondary" href="{% url 'student_dashboard' %}">Return to Dashboard</a>
+        <a class="btn btn-danger" href="{% url 'student_logout' %}">Logout</a>
+    </div>
+</div>
+{% endblock %}

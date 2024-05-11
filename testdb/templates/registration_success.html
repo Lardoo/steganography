@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    /* CSS for the registration success page */
+    body {
+        background-color: #2c3e50;
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        color: #333;
+        /* Default text color */
+    }
+
+    /* Success container styles */
+    .success-container {
+        max-width: 400px;
+        background-color: #fff;
+        border: 1px solid #e0e0e0;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        text-align: center;
+    }
+
+    /* Heading styles */
+    .success-container h2 {
+        color: #3498db;
+        /* Blue heading color */
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+
+    /* Text paragraph styles */
+    .success-container p {
+        font-size: 18px;
+        color: #333;
+        /* Default text color */
+    }
+
+    /* Registration link styles */
+    .registration-link {
+        color: #007BFF;
+        /* Blue link color */
+        text-decoration: none;
+        font-size: 18px;
+        margin-top: 20px;
+        /* Add some spacing below the paragraph */
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #3498db;
+        /* Button background color */
+        color: #ecf0f1;
+        /* Button text color */
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+
+    .registration-link:hover {
+        background-color: #2980b9;
+        /* Slightly darker blue on hover */
+    }
+
+    /* Navigation links styles */
+    .nav-links {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        display: flex;
+    }
+
+    .nav-links a {
+           color: #3498db;
+            /* Blue link color */
+            font-size: 16px;
+            margin: 0 10px;
+            transition: color 0.3s;
+            display: block;
+            
+            padding: 10px 20px;
+            background-color: #3498db;
+            /* Button background color */
+            color: #ecf0f1;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            font-size: 18px;
+    }
+
+    .nav-links a:hover {
+        color: #0056b3;
+        /* Darker blue on hover */
+    }
+
+    .logout-link {
+         position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #e74c3c;
+            /* Red button color */
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            display: block;
+        
+            margin: 10px 0;
+            padding: 10px 20px;
+           
+            
+            color: #ecf0f1;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            font-size: 18px;
+    }
+
+    .logout-link:hover {
+        color: #b30c00;
+    }
+</style>
+
+<div class="nav-links">
+    <a href="/validate_certificate">Validate Certificate</a>
+    <a href="/">Back Homepage</a>
+</div>
+
+<a href="/logout" class="logout-link">Logout</a>
+
+<div class="success-container">
+    <h2>Certificate Registered Successfully</h2>
+    <p style="color: green;">Awaiting  approval by Registrar.</p>
+    <a href="{% url 'register_student' %}" class="registration-link">Register Another Certificate</a>
+</div>
+
+{% endblock %}

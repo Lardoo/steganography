@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    /* Add this CSS to your stylesheet to style the elements */
+    .student-dashboard {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f0f0f0;
+        /* Background color */
+        border: 1px solid #ccc;
+        /* Border */
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .page-title {
+        color: #007bff;
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .student-info {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        text-decoration: none;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        text-align: center;
+        transition: background-color 0.3s;
+        background-color: #007bff;
+        /* Button background color */
+        color: #fff;
+    }
+
+    .btn:hover {
+        background-color: #0056b3;
+    }
+
+    /* Style the "Logout" link */
+    .logout-link {
+        text-decoration: none;
+        color: #007bff;
+        font-weight: bold;
+    }
+
+    .logout-link:hover {
+        text-decoration: underline;
+    }
+    .back-homepage {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: inline-block;
+            padding: 10px 20px;
+            background: #3498db;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+            font-size: 18px;
+        }
+
+        .back-homepage:hover {
+            background: #2980b9;
+        }
+</style>
+</head>
+<body>
+<a class="back-homepage" href="/">Back to Homepage</a>
+{% block content %}
+<div class="student-dashboard">
+    <h1 class="page-title">Welcome, {{ student.name }}</h1>
+    <div class="student-info">
+        <p>Registration Number: {{ student.registration_number }}</p>
+        <p>Course: {{ student.course }}</p>
+        <p>Year of Completion: {{ student.year_of_completion }}</p>
+    </div>
+
+    <a href="{% url 'download_certificate' student.id %}" class="btn btn-primary">Download Certificate</a>
+
+    <p class="logout-link"><a href="{% url 'custom_logout' %}">Logout</a></p>
+</div>
+{% endblock %}
+</body>
+</html>

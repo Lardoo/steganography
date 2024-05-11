@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{% block title %}SECURE STEGANOGRAPHY SYSTEM{% endblock %}</title>
+    <style>
+        /* CSS for the base template */
+        body {
+            background-color: #f5f5f5;
+            /* Light gray background color */
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #007BFF;
+            /* Blue background for the header */
+            padding: 20px;
+        }
+
+        header h1 {
+            color: #fff;
+            /* White text color for the header */
+            font-size: 28px;
+            text-align: center;
+            margin: 0;
+        }
+
+        #content {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            /* White background for the content */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            background-color: #333;
+            /* Dark background for the footer */
+            color: #fff;
+            /* White text color for the footer */
+            text-align: center;
+            padding: 10px;
+        }
+
+        footer a {
+            color: #007BFF;
+            /* Blue link color for footer links */
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+   
+    <div id="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+   
+</body>
+
+</html>

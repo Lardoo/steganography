@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Annual Report for {{ annual_report.year }}</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #007BFF;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 36px;
+        }
+
+        .report-container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .report-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .report-section {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+        }
+
+        .report-label {
+            font-size: 18px;
+            flex: 1;
+        }
+
+        .report-value {
+            font-size: 20px;
+            font-weight: bold;
+            flex: 1;
+            text-align: right;
+        }
+
+        .total {
+            margin-top: 20px;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 40px;
+            color: #007BFF;
+            text-decoration: none;
+            font-size: 20px;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+              .download-button {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            text-decoration: none;
+            text-align: center;
+            border-radius: 5px;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+
+        .download-button:hover {
+            background-color: #0056b3;
+        }
+               .back-homepage {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: inline-block;
+            padding: 10px 20px;
+            background: #dbc234;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+            font-size: 18px;
+        }
+
+        .back-homepage:hover {
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <a class="back-homepage" href="/dashboard">Back to Dashboard</a>
+    <div class="header">
+        Annual Report for {{ annual_report.year }}
+    </div>
+    <div class="report-container">
+        <div class="report-title">Certificate Generation and Validation</div>
+        <div class="report-section">
+            <div class="report-label">Total Certificates Issued:</div>
+            <div class="report-value">{{ annual_report.generated_certificates_count }}</div>
+        </div>
+        <div class="report-section">
+            <div class="report-label">Total Certificates Validated:</div>
+            <div class="report-value">{{ annual_report.certificate_count }}</div>
+        </div>
+        <div class="report-section total">
+            <div class="report-label">Valid Certificates:</div>
+            <div class="report-value">{{ annual_report.valid_certificates_count }}</div>
+        </div>
+        <div class="report-section">
+            <div class="report-label">Invalid Certificates:</div>
+            <div class="report-value">{{ annual_report.invalid_certificates_count }}</div>
+        </div>
+        <a class="download-button" href="{% url 'download_report_as_pdf' %}">Download PDF</a>
+        <a class="back-link" href="{% url 'view_annual_report' %}">Back to Report Selection</a>
+    </div>
+</body>
+
+</html>
